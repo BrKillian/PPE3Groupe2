@@ -115,7 +115,7 @@ class Controleur
 						if($resultat==1)
 						{
 							require 'Vues/menu.php';
-							echo $this->maVideotheque->listeLesGenres();	
+							echo $this->maVideotheque->listeLesGenres();						
 						}
 						else
 						{

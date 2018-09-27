@@ -31,11 +31,14 @@ Class conteneurFilm
 		{
 		$liste = '';
 		foreach ($this->lesFilms as $unFilm)
-			{	$leGenre=$unFilm->getLeGenreDuFilm();
+			{	
+				$leGenre=$unFilm->getLeGenreDuFilm();
 			    $liste = $liste.'Film N° : "'.$unFilm->getIdFilm().' -> Film : '.$unFilm->getTitreFilm().' - '.$leGenre.' - '.$unFilm->getDureeFilm().'><br>';
 			}
 		return $liste;
 		}
+	
+
 		
 		//METHODE RETOURNANT LA LISTE DES films DANS UNE BALISE <SELECT>------------------------------------------------------------------
 	public function lesFilmsAuFormatHTML()

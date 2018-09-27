@@ -33,6 +33,7 @@ Class gestionVideo
 		$this->toutesLesSaisons = new conteneurSaison();
 		$this->tousLesEpisodes = new conteneurEpisode();
 		$this->tousLesEmprunts = new conteneurEmprunt();
+		$this->lesSupportsDunGenre = new conteneurSupport();
 		
 		$this->maBD = new accesBD();
 		
@@ -305,8 +306,14 @@ Class gestionVideo
 	public function listeLesEpisodes()
 		{
 		return $this->tousLesEpisodes->listeDesEpisodes();
-		}		
-			
+		}
+	
+	public function listeSupportsSelonGenre() 
+	{ 
+	
+		return $this->tousLesSupports->listeSelonGenre($unIdGenre);
+	}
+	
 	//METHODE RETOURNANT LA LISTE DES DIFFERENTS ELEMENTS DANS DES BALISES <SELECT>-----------------------------------------------------------------
 	public function lesClientsAuFormatHTML()
 		{

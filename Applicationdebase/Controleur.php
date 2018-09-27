@@ -68,7 +68,7 @@ class Controleur
 				$this->vueSerie($action);
 				break;
 			case 'Videotheque':
-				$this->vueRessource($action);
+				$this->vueVideotheque($action);
 				break;
 			case "accueil":
 				session_destroy();
@@ -115,7 +115,7 @@ class Controleur
 						if($resultat==1)
 						{
 							require 'Vues/menu.php';
-							echo $this->maVideotheque->listeLesGenres();	
+							echo $this->maVideotheque->listeLesGenres();
 						}
 						else
 						{
@@ -189,7 +189,7 @@ class Controleur
 					}
 				else
 					{
-					$_SESSION['lesRessources'] = $this->maMairie->listeLesRessources();
+					$_SESSION['lesRessources'] = $this->maVideotheque->listeSupportsSelonGenre(); 
 					require 'Vues/voirRessource.php';
 					}
 				break;

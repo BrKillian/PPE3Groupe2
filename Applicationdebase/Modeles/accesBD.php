@@ -20,8 +20,8 @@ class accesBD
 		// ORDI PROFSIO
 		$this->hote="172.16.0.50";
 		$this->port="";
-		$this->login="ALT18COLLIN";
-		$this->passwd="collin123!";
+		$this->login="ALT18BRONDY";
+		$this->passwd="brondy123!";
 		$this->base="videoppe3groupe2";
 		
 		// ORDI DEV2
@@ -115,6 +115,31 @@ class accesBD
 		//retour de l'identifiant du nouveau tuple
 		return $sonId;
 		}
+		
+	
+	//Recuperation des supports d'un genre (kiki) -----------------------------------------------------------------------------------------------------------------------------------------
+		public function donneSupportsDunGenre($unIdGenre)
+		{
+			$lesSupportsDunGenre=null;
+			$nbTuples=0;
+			$requete = $this->con->prepare("SELECT * FROM support WHERE support.idGenre = Values(?) ORDER BY support.titreSupport");
+			$requete->bindValue($unIdGenre);
+			
+			if(!$requete->execute())
+			{
+				while($row = $query->fetch(PDO::FETCH_NUM))
+				{
+					$lesSupportsDunGenre[$nbTuples] = $row;
+					$nbTuples++;
+				}
+			}
+			else 
+			{
+				die("Erreur dans selectSupports : ".$requete->errorCode());
+			}
+			return $lesSupportsDunGenre;
+		}	
+	
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//---------------------------CREATION DE LA REQUETE D'INSERTION DES GENRES------------------------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -334,6 +359,7 @@ class accesBD
 			die('Erreur sur donneProchainIdentifiant : '+$requete->errorCode());
 		}
 		}
+	
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//-----------------------------DONNE LE PROCHAIN INDENTIFIANT D'UNE SAISON---------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -391,7 +417,8 @@ class accesBD
 		{
 			die('Erreur sur donneProchainIdentifiantEpisode : '+$requete->errorCode());
 		}
-		}	
+		}
+	
 	}
 
 ?>

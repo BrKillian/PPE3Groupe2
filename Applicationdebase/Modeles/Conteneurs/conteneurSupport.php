@@ -34,7 +34,8 @@ Class conteneurSupport
 			}
 		return $liste;
 		}
-				//METHODE RETOURNANT LA LISTE DES supports DANS UNE BALISE <SELECT>------------------------------------------------------------------
+	
+	//METHODE RETOURNANT LA LISTE DES supports DANS UNE BALISE <SELECT>------------------------------------------------------------------
 	public function lesSupportsAuFormatHTML()
 		{
 		$liste = "<SELECT name = 'idSupport'>";
@@ -46,7 +47,7 @@ Class conteneurSupport
 		return $liste;
 		}		
 	
-//METHODE RETOURNANT UN Support A PARTIR DE SON NUMERO--------------------------------------------	
+    //METHODE RETOURNANT UN Support A PARTIR DE SON NUMERO--------------------------------------------	
 	public function donneObjetSupportDepuisNumero($unIdSupport)
 		{
 		//initialisation d'un booléen (on part de l'hypothèse que le Support n'existe pas)
@@ -72,8 +73,53 @@ Class conteneurSupport
 			}
 			return $leBonSupport;
 		}
-	
-	
+		/*
+	//METHODE RETOURNANT un tableau de support a partir du numéro du genre demandé (a récuperer en get dans gestion)--------------------------------------------	
+	public function tableauSelonGenre($unIdGenre)
+		{
+				$tableau =array();
+				foreach ($this->lesSupports as $unSupport)
+				{
+					If ($unSupport->getIdSupport == $unIdGenre)
+					{
+						$leTitre = $unSupport->getTitreSupport();
+						$laPhoto = $unGenre-> getImageSupport();
+						$tableau[$leTitre] = $laPhoto;
+					}
+				}
+				return $tableau;
+			
+		}
+	//METHODE RETOURNANT l'affichage des supports selon le genre----------------------------------------------------------------------------------------
+	public function listeSelonGenre($unIdGenre)
+		{
+			?>
+			<table>
+				</body>
+					<tbody>
+					<tr>
+			<?php
+				
+				$tableau = $this->tableauSelonGenre($unIdGenre);
+				$compteurTD = 0;
+				foreach ($tableau as $titre => $photo)
+				{
+					$compteurTD = $compteurTD+1;
+					echo '<td><div class="photoContainer"><img class="accueilPhotosPays" src=Images/'.$photo.'>';
+					echo '<div class="accueilPhotosPaysOverlay"><div class="textOverlay">'.$titre.'</div></div></div></td>';
+					if (($compteurTD % 4) == 0) 
+					{
+						
+						echo '</tr><tr>';
+					}
+				}
+			?>
+					</tr>
+				</tbody>
+			</table>
+	<?php
+		}
+		*/
 	}
 	
 ?> 
